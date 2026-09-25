@@ -12,7 +12,7 @@ const Navbar = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> 
             </svg>
           </div>
-          <ul tabIndex={-1} className="menu menu-sm dropdown-content bg-[#12131a] rounded-box z-[1] mt-3 w-52 p-2 shadow text-gray-300">
+          <ul tabIndex={-1} className="menu menu-sm dropdown-content bg-[#12131a] rounded-box z-index: 1 mt-3 w-52 p-2 shadow text-gray-300">
             <li><a className="text-[#a3e635] font-semibold">Workouts</a></li>
             <li><a>My Plan</a></li>
           </ul>
