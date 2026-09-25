@@ -5,7 +5,7 @@ import logo from "@/assets/logo.png";
 const Footer = () => {
   
   return (
-    <footer className="w-full bg-black text-gray-500 text-xs px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-neutral-900/50">
+    <footer className="w-full bg-black text-gray-500 text-xs px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-neutral-900/50 container mx-auto m-4">
       
       <div className="flex items-center gap-2 cursor-pointer">
         <Image src={logo} alt="FitLog Logo" />
