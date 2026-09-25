@@ -11,13 +11,13 @@ const Banner = () => {
           Workout Library
         </span>
         
-        <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight leading-none">
+        <h1 className="text-white text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight leading-none">
           Train with intent.Log <br />  every set.
         </h1>
         
         <p className="text-gray-400 text-sm sm:text-base font-normal leading-relaxed max-w-md">
           FitLog is a dark, no-nonsense gym companion: pick a lift, lock it 
-          into today's plan, and watch the week's work add up.
+          into today s plan, and watch the week s work add up.
         </p>
         
         <div className="pt-2">
@@ -29,7 +29,7 @@ const Banner = () => {
       </div>
 
       <div className="flex-1 flex justify-center md:justify-end w-full max-w-sm md:max-w-md">
-        <Image src={bannerImg} alt="Bicep Curl Workout Anatomy Illustration"/>
+        <Image src={bannerImg} alt="Banner logo"/>
       </div>
 
     </section>
