@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { IWorkout } from '@/components/types';
 import { useWorkouts } from '@/app/context/WorkoutsContext';
+import toast from 'react-hot-toast';
 
 interface WorkoutDetailsClientProps {
   workout: IWorkout;
@@ -18,20 +19,24 @@ export default function WorkoutDetailsClient({ workout }: WorkoutDetailsClientPr
   const handleTogglePlan = () => {
     if (isInPlan) {
       setAddToPlan(addToPlan.filter((item) => item.id !== workout.id));
+      toast.error(`Removed "${workout.name}" from today's plan`);
     } else {
       if (addToPlan.length >= 5) {
-        alert("Cap of five lifts for today. Finish them, then load more.");
+        toast.error("Cap of five lifts for today. Finish them, then load more.");
         return;
       }
       setAddToPlan([...addToPlan, workout]);
+      toast.success(`Added "${workout.name}" to today's plan!`);
     }
   };
 
   const handleToggleSave = () => {
     if (isSaved) {
       setSaveLater(saveLater.filter((item) => item.id !== workout.id));
+      toast.error(`Removed "${workout.name}" from saved list`);
     } else {
       setSaveLater([...saveLater, workout]);
+      toast.success(`Saved "${workout.name}" for later!`);
     }
   };
 

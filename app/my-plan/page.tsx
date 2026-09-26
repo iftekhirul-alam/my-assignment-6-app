@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useWorkouts } from '../context/WorkoutsContext';
+import toast from 'react-hot-toast';
 
 export default function MyPlanPage() {
   const { addToPlan, setAddToPlan, saveLater, setSaveLater } = useWorkouts();
@@ -23,12 +24,18 @@ export default function MyPlanPage() {
     return 0;
   });
 
-  const handleRemove = (id: number) => {
+  const handleRemove = (id: number, name: string) => {
     if (activeTab === 'plan') {
       setAddToPlan(addToPlan.filter((item) => item.id !== id));
+      toast.error(`Removed "${name}" from plan`);
     } else {
       setSaveLater(saveLater.filter((item) => item.id !== id));
+      toast.error(`Removed "${name}" from saved`);
     }
+  };
+
+  const handleMarkAsDone = (name: string) => {
+    toast.success(`Great job finishing "${name}"! 🎉`);
   };
 
   return (
@@ -141,13 +148,16 @@ export default function MyPlanPage() {
                   </Link>
 
                   {activeTab === 'plan' && (
-                    <button className="px-5 py-2.5 rounded-xl bg-[#a3e635] hover:bg-[#b5f34c] text-black text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5">
+                    <button 
+                      onClick={() => handleMarkAsDone(workout.name)}
+                      className="px-5 py-2.5 rounded-xl bg-[#a3e635] hover:bg-[#b5f34c] text-black text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5"
+                    >
                       ✓ Mark as Done
                     </button>
                   )}
 
                   <button
-                    onClick={() => handleRemove(workout.id)}
+                    onClick={() => handleRemove(workout.id, workout.name)}
                     className="p-2.5 rounded-xl bg-neutral-900 text-gray-500 hover:text-red-400 hover:bg-neutral-800 transition-all"
                     title="Remove item"
                   >
