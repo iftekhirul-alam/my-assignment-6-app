@@ -1,40 +1,51 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fitlog: Interactive Web App for Workout
 
-## Getting Started
+**A short note about the project**: Fitlog is an intuitive, high-performance fitness companion built with Next.js App Router and Tailwind CSS. It empowers users to explore curated exercise routines, build customized daily training plans, track performance metrics like burned calories and duration, and seamlessly manage saved workouts with real-time feedback notifications.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Key Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* **Dynamic Workout Exploration**: Browse a comprehensive catalog of routines fetched dynamically from a secure worker API.
+* **Detailed Exercise Views**: Dive deep into each exercise with high-resolution imagery, muscle group tags, equipment details, difficulty ratings, calorie burn, and step-by-step instructions.
+* **Global State Management**: Powered by React Context (`WorkoutsProvider`) to seamlessly track and sync your active plan and saved lists across pages.
+* **Interactive "My Plan" Dashboard**: 
+  * Real-time calculation of total exercise counts, total duration (minutes), and total calories burned.
+  * Sort routines dynamically by duration, calories, or user rating.
+  * Toggle items between "Today's Plan" and "Saved for Later".
+* **Toast Notifications**: Instant feedback alerts using `react-hot-toast` whenever routines are added, removed, or completed.
+* **Fully Responsive & Dark-Themed**: Built with a sleek, modern dark mode aesthetic optimized for desktop, tablet, and mobile devices.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Tech Stack
 
-## Learn More
+* **Framework**: [Next.js](https://nextjs.org/) (App Router)
+* **Library**: [React](https://react.dev/) (React 19)
+* **Styling**: [Tailwind CSS](https://tailwindcss.com/) & [daisyUI](https://daisyui.com/)
+* **Language**: [TypeScript](https://www.typescriptlang.org/)
+* **Notifications**: [React Hot Toast](https://react-hot-toast.com/)
+* **API Source**: Cloudflare Worker REST API (`https://api.abcz.workers.dev/api/fitlog`)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# my-assignment-6-app
->>>>>>> c0402f131d1dae80aa6f8adb6852be70069442dc
+```text
+my-a06-app/
+├── app/
+│   ├── context/
+│   │   └── WorkoutsContext.tsx   # Global state provider for Plan & Saved items
+│   ├── my-plan/
+│   │   └── page.tsx              # Interactive dashboard for plan management & sorting
+│   ├── workout/
+│   │   └── [slug]/
+│   │       ├── page.tsx          # Server component for single workout data fetching
+│   │       └── WorkoutDetailsClient.tsx # Client component for details & context interactions
+│   ├── globals.css               # Global styles and Tailwind directives
+│   ├── layout.tsx                # Root layout wrapping providers, Navbar, and Toaster
+│   └── page.tsx                  # Homepage route
+├── components/
+│   ├── Homepage/                 # Banner and workout feed components
+│   ├── Navbar.tsx                # Global navigation with live state badges
+│   └── Footer.tsx                # Site footer
+└── types/                        # TypeScript interfaces for workout objects
